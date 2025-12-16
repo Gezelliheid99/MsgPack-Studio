@@ -1,0 +1,5 @@
+{
+  "name": "MsgPack Studio",
+  "description": "A high-performance MessagePack parser, editor, and visualizer capable of handling large files with a minimalist, modern interface. Includes AI-powered analysis.",
+  "requestFramePermissions": []
+}
