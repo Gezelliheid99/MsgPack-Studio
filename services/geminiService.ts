@@ -3,13 +3,28 @@ import { AnalysisResult } from '../types';
 
 let aiClient: GoogleGenAI | null = null;
 
+const getApiKey = (): string | undefined => {
+  // Safe check for process.env to avoid crashing in browser environments where process is undefined
+  if (typeof process !== 'undefined' && process.env && process.env.API_KEY) {
+    return process.env.API_KEY;
+  }
+  // If using Vite, it uses import.meta.env
+  // @ts-ignore
+  if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_KEY) {
+    // @ts-ignore
+    return import.meta.env.VITE_API_KEY;
+  }
+  return undefined;
+};
+
 const getAiClient = () => {
   if (!aiClient) {
-    if (!process.env.API_KEY) {
+    const apiKey = getApiKey();
+    if (!apiKey) {
       console.warn("API_KEY is missing. AI features will be disabled.");
       return null;
     }
-    aiClient = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    aiClient = new GoogleGenAI({ apiKey });
   }
   return aiClient;
 };
