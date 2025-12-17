@@ -247,14 +247,14 @@ function App() {
             
             {jsonContent && (
               <>
-                 <Button 
+                 {/* <Button 
                   variant="ghost"
                   icon={<Sparkles className="w-4 h-4 text-purple-600" />}
                   onClick={handleAiAnalyze}
                   className="hidden sm:inline-flex"
                 >
                   AI Analyze
-                </Button>
+                </Button> */}
                 <div className="h-6 w-px bg-gray-200 mx-1 hidden sm:block"></div>
                 <Button 
                   variant="secondary" 
